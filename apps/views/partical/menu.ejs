@@ -1,0 +1,37 @@
+<header role="banner" id="fh5co-header">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="fh5co-navbar-brand">
+                        <a class="fh5co-logo" href="/">Narrow</a>
+                    </div>
+                </div>
+                <div class="col-md-9 main-nav">
+                    <ul id="menuid" class="nav text-right">
+                        <li class="active"><a href="/"><span>Home</span></a></li>
+                        <li><a href="services">Services</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<script>
+    var menuid = document.getElementById("menuid");
+    var href = window.location;
+    var pathname = href.pathname;
+    for (var i = 0; i < menuid.children.length; i++) {
+        menuid.children[i].classList.remove("active");
+
+    }
+    if (pathname == "/services") {
+        menuid.children[1].classList.add("active");
+    }
+    if (pathname == "/") {
+        menuid.children[0].classList.add("active");
+    }
+</script>
