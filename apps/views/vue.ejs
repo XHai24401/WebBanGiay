@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <h1>Firstname : {{firstname}}</h1>
+
+        <h1>Lastname : {{lastname}}</h1>
+
+        <h1>{{mydetails()}}</h1> 
+        <ul>
+
+            <li v-for="value in productList.products">
+                {{ value.id }} - {{ value.title }}             </li>
+        </ul>
+    </div>
+
+    <script>
+        var  app = new Vue({      
+            el: '#app',
+                  data: {        
+                firstname: "John",
+                        lastname : "Doe",
+                        subject  : " GreatLearning VueJS Tutorial",
+                        productList: Object      
+            },
+                  methods: {        
+                mydetails: function() {          
+                    return "I am " + this.firstname + " " + this.lastname + "studying " + this.subject;        
+                }      
+            },
+                  mounted: async function() {        
+                const response =  await
+                fetch("https://dummyjson.com/products");        
+                var jsonResponse = await response.json();        
+                this.productList  = jsonResponse;               
+                console.log(this.productList);      
+            }    
+        })
+    </script>
+
+</body>
+
+</html>
