@@ -1,0 +1,11 @@
+{
+    "mongodb":{
+       "username": "ha24i_demodb",
+       "password": "Hai123",
+       "database":"Sneaker"
+    },
+    "jwt": {
+      "secret":"goK!pusp6ThEdURUtRenOwUhAsWUCLheBazl!uJLPlS8EbreWLdrupIwabRAsiBu"
+     }  
+ }
+ 
