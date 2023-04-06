@@ -12,8 +12,8 @@ class UserService{
         this.userDatabase =  this.client.db(config.mongodb.database);
         this.userCollection = this.userDatabase.collection("user");
     }
-    async login(phone, password){
-        return await this.userCollection.findOne({"phone": phone, "password": password});
+    async login(email, password){
+        return await this.userCollection.findOne({"email": email, "password": password});
     }
     async register(user){
         return await this.userCollection.insertOne(user);

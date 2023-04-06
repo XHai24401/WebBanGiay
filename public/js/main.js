@@ -1,5 +1,7 @@
 /*price range*/
 
+
+
  $('#sl2').slider();
 
 	var RGBChange = function() {
@@ -7,6 +9,25 @@
 	};	
 		
 /*scroll to top*/
+
+// var proQty = $('.cart_quantity_button');
+//     proQty.prepend('<a class="inc qtybtn" href=""> + </a>');
+//     proQty.append('<a class="dec qtybtn" href=""> - </a>');
+//     proQty.on('click', '.qtybtn', function () {
+//         var $button = $(this);
+//         var oldValue = $button.parent().find('input').val();
+//         if ($button.hasClass('inc')) {
+//             var newVal = parseFloat(oldValue) + 1;
+//         } else {
+//             // Don't allow decrementing below zero
+//             if (oldValue > 0) {
+//                 var newVal = parseFloat(oldValue) - 1;
+//             } else {
+//                 newVal = 0;
+//             }
+//         }
+//         $button.parent().find('input').val(newVal);
+//     });
 
 $(document).ready(function(){
 	$(function () {
