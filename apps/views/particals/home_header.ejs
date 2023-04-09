@@ -1,0 +1,212 @@
+<!-- Header -->
+<style>
+    .button {
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #7FAD39;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 14px;
+      padding: 5px;
+      width: 100px;
+      transition: all 0.5s;
+      cursor: pointer;
+      
+    }
+    
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+    
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+    
+    .button:hover span {
+      padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+    </style>
+<header class="header">
+    <div class="header__top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__left">
+                        <ul>
+                            <li><i class="fa fa-envelope"></i> ogani@gmail.com</li>
+                            <li>Free Shipping for all Order</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="header__top__right">
+                        <div class="header__top__right__auth">
+                            <!-- login -->
+                            <% if(req.cookies.userToken) {%>
+                                <a href="/user/logout" class="button" style="vertical-align:middle">
+                                    <span>Logout</span>
+                                    <!-- <span><%=req.cookies.userName%></span> -->
+                                </a>                     
+                            <% } else { %>
+                                <button type="button" data-toggle="modal" data-target="#login" class="button" style="vertical-align:middle">
+                                    <span>Login</span>
+                                </button>
+                                <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content clearfix">
+                                            <button class="close"><a href="/home" style="color: white;"><span aria-hidden="true">×</span></a></button>                                
+                                            <div class="modal-body">
+                                                <h3 class="title">Login Form</h3>
+                                                <p class="description">Login here using Phone & Password</p>
+                                                <form action="/user/login" method="post">
+                                                    <div class="form-group">
+                                                        <span class="input-icon"><i class="fa fa-user"></i></span>
+                                                        <input type="number" name="phone" class="form-control" placeholder="Enter your phone">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <span class="input-icon"><i class="fa fa-key"></i></span>
+                                                        <input type="password" name="password" class="form-control" placeholder="Enter your password">
+                                                    </div>
+                                                    <div class="form-group checkbox">
+                                                        <input type="checkbox">
+                                                        <label>Remamber me</label>
+                                                    </div>
+                                                    <a href="" class="forgot-pass">Forgot Password?</a>
+                                                    <button type="submit" class="btn">Login</button>
+                                                </form>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- register -->
+                                <button type="button" data-toggle="modal" data-target="#register" class="button" style="vertical-align:middle">
+                                    <span>Register</span>
+                                </button>
+                                <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content clearfix">
+                                            <button class="close"><a href="/home" style="color: white;"><span aria-hidden="true">×</span></a></button>                                
+                                            <div class="modal-body">
+                                                <h3 class="title">Register Form</h3>
+                                                <p class="description">Enter your information to register</p>
+                                                <form action="/user/register" method="post">
+                                                    <div class="form-group">
+                                                        <span class="input-icon"><i class="fa fa-key"></i></span>
+                                                        <input type="text" name="full_name" class="form-control" placeholder="Enter your full name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <span class="input-icon"><i class="fa fa-user"></i></span>
+                                                        <input type="number" name="phone" class="form-control" placeholder="Enter your phone">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <span class="input-icon"><i class="fa fa-key"></i></span>
+                                                        <input type="password" name="password" class="form-control" placeholder="Enter your password">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <span class="input-icon"><i class="fa fa-key"></i></span>
+                                                        <input type="email" name="email" class="form-control" placeholder="Enter your email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <span class="input-icon"><i class="fa fa-key"></i></span>
+                                                        <input type="text" name="address" class="form-control" placeholder="Enter your address">
+                                                    </div>
+                                                    
+                                                    <a href="" class="forgot-pass">Forgot Password?</a>
+                                                    <button type="submit" class="btn">Register</button>
+                                                </form>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__search__phone">
+                    
+                    
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="header__logo">
+                    <a href="/home"><img src="/public/img/logo.png" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <nav class="header__menu">
+                    <ul>
+                        <li class="active"><a href="/home">Home</a></li>
+                        <li><a href="/food?category_id=0">Shop</a></li>
+                        <li><a href="/home/blog">Blog</a></li>
+                        <li><a href="/home/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-lg-3">
+                <div class="header__cart">
+                    <ul>
+                        <li><a href="/cart"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                    </ul>
+                    <div class="header__cart__price">item: <span>$150.00</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="humberger__open">
+            <i class="fa fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="hero__search">
+                    <div class="hero__search__form">
+                        <form action="/food/findFood" method="post">
+                            <input type="text" name="food_name" placeholder="What do you need?">
+                            <button type="submit" class="site-btn">SEARCH</button>
+                        </form>
+                    </div>
+                    <div class="hero__search__phone">
+                        <div class="hero__search__phone__icon">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="hero__search__phone__text">
+                            <h5>+84 919.504.570</h5>
+                            <span>support 24/7 time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__item set-bg" data-setbg="/public/img/hero/banner2.avif">
+                    <div class="hero__text">
+                        <span>OGANI FOOD</span>
+                        <h2>Discount <br />Up to 50%</h2>
+                        <p>Free Pickup and Delivery Available</p>
+                        <a href="#" class="primary-btn">SHOP NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

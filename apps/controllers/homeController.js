@@ -5,11 +5,9 @@ var DataService = require("./../services/dataService");
 
 router.get("/", async function(req,res){
     var dataService = new DataService();
-    req.session.categories = await dataService.getCategoryList();
-    req.session.products = await dataService.getProductList()
-    var products=req.session.products;
-    var categories =  req.session.categories;
-    res.render("homeView/homePage", { categoryList : categories,productList:products}); //, foodList: discountFoods
+    var categories = await dataService.getCategoryList();
+    var products = await dataService.getProductList();
+    res.render("homeView/homePage", { req: req, categoryList : categories, productList: products});
 });
 
 router.get("/contact", function(req,res){

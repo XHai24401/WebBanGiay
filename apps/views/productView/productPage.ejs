@@ -49,7 +49,7 @@
                             <div class="panel panel-default">
                                 <ul>
                                     <% for( let item of categoryList ) {%>
-                                    <li><a href="/product?category_id=<%=item._id%>">
+                                        <li style="padding: 10px;"><a style="color: black;" href="/product?category_id=<%=item._id%>&category_name=<%=item.name%>">
                                             <%=item.name%>
                                         </a></li>
                                     <% } %>
@@ -83,7 +83,7 @@
                         <% for( let item of productList ) {%>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
-                                <div class="single-products">
+                                <div style="height: 250px; width: 200px;" class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="<%=item.image%>" alt="" />
                                         <h2><%=(item.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })%>

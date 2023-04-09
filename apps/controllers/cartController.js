@@ -9,21 +9,18 @@ var verifyToken = require("../util/VerifyToken");
 var Cart = require('./../models/cart'); 
 var CartDetail = require('./../models/cart_detail'); 
 var moment = require('moment');
-
-//jwt
-const jsonwebtoken = require("jsonwebtoken");
-const jwtExpirySeconds = 300
+var verifyToken = require("../util/VerifyToken");
 var cart = []
-router.get("/", function(req,res){
+router.get("/", verifyToken, function(req,res){
     if(!cart){
         res.send('Giỏ hàng rỗng!');
     }
     else{
         const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-        res.render('cartView/cartPage', {cart: cart, total: total});
+        res.render('cartView/cartPage', {req : req, cart: cart, total: total});
     }
 });
-router.get("/addToCart/:productId", async function(req,res){
+router.get("/addToCart/:productId", verifyToken, async function(req,res){
     var dataService = new DataService();
     var productId = req.params.productId;
     var product = await dataService.getProductById(productId);
@@ -38,7 +35,13 @@ router.get("/addToCart/:productId", async function(req,res){
         cart.push({product, quantity : 1});
     }
     const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-    res.render('cartView/cartPage', {cart: cart, total: total});
+    res.render('cartView/cartPage', {req : req, cart: cart, total: total});
+});
+
+router.post("/deleteToCart/:productId", verifyToken, async function(req,res){
+    var dataService = new DataService();
+    await dataService.deleteCart(req.params.id);
+    res.redirect("cartView/cartPage");
 });
 
 router.get("/checkout", verifyToken, async function(req,res){
@@ -50,7 +53,7 @@ router.get("/checkout", verifyToken, async function(req,res){
         var userService = new UserService();
         var userData = await userService.getUser(userId);
         const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-        res.render('cartView/checkout', {userData: userData, cart: cart, total: total});
+        res.render('cartView/checkout', {req : req, userData: userData, cart: cart, total: total});
     }    
 });
 
@@ -72,6 +75,6 @@ router.post("/order", verifyToken, async function(req,res){
             var result_cartdetail =  await cartService.insertCartDetail(addCartDetail);
         }
         cart = [];
-        res.json({"message": "oke"});   
+        res.send('<script>window.location.href="/home"; alert("Đơn hàng đã được đặt!"); </script>');   
 });
 module.exports = router;

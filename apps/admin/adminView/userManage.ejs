@@ -1,0 +1,42 @@
+<div class="content-wrapper">
+    <div style="background-color: white; padding: 10px;">
+        <div>
+            <h2 style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>Customer Manage</strong>
+            </h2>
+            <h3 style="border-bottom: 1px solid #ccc;"></h3>
+        </div>
+        <table id="table" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#table').DataTable({
+            "ajax": '/admin/getUserList',
+            "columns": [
+                { "data": "full_name" },
+                { "data": "phone" },
+                { "data": "email" },
+                { "data": "address" },
+            ],
+            columnDefs: [
+                {
+                    target: 0,
+                    type: 'natural',
+                },
+            ],
+        });
+    });
+</script>

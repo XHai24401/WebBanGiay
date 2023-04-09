@@ -1,7 +1,7 @@
 class Cart_Detail {
     _id;
     cart_id;
-    food_id;
+    product_id;
     quantity;
     constructor() {
 

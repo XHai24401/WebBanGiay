@@ -22,14 +22,19 @@ class UserService{
     async getUser(id){
         return await this.userCollection.findOne({"_id": new ObjectId(id) },{});
     }
-    async insertuser(user){
-        return await this.userCollection.insertOne(user);
+    async getUserList() {
+        const cursor = await this.userCollection.find({}, {}).skip(0).limit(100);
+        return await cursor.toArray();
     }
-    async updateuser(user){
+    async updateInf(user){
         return await this.userCollection.updateOne({"_id": new ObjectId(user._id) }, {$set: user});
     }
-    async deleteuser(id){
-        return await this.userCollection.deleteOne({"_id": new ObjectId(id) });
+    async findByEmail(email){
+        return await this.userCollection.findOne({"email": email});
+    }
+    
+    async updatePassword(id, new_password){
+        return await this.userCollection.updateOne({"_id": new ObjectId(user._id) }, {$set: {password: new_password}});
     }
   
 }

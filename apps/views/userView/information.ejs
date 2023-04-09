@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="/public/css/user_inf.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row profile">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <!-- SIDEBAR USERPIC -->
+                    <div class="profile-userpic">
+                        <img src="https://bloganchoi.com/wp-content/uploads/2022/02/avatar-trang-y-nghia.jpeg"
+                            class="img-responsive" alt="">
+                    </div>
+                    <!-- END SIDEBAR USERPIC -->
+                    <!-- SIDEBAR USER TITLE -->
+                    <div class="profile-usertitle">
+                        <div class="profile-usertitle-name">
+                            Xin chào! <%=user.full_name%>
+                        </div>
+                    </div>
+                    <!-- END SIDEBAR USER TITLE -->
+                    <!-- SIDEBAR MENU -->
+                    <div class="profile-usermenu">
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    Trang cá nhân </a>
+                            </li>
+                            <li>
+                                <!-- <a href="/user/forgot-password/<%=user.email%>">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    Quên mật khẩu </a> -->
+                                    <form method="POST" action="/user/forgot-password">
+                                        <input type="hidden" id="email" name="email" value="<%=user.email%>" required>                               
+                                        <button class="glyphicon glyphicon-user" type="submit">Quên mật khẩu</button>
+                                    </form>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                    Đổi mật khẩu </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END MENU -->
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="profile-content">
+                    <div class="container">
+                        <h2>Personal Information</h2>
+                        <form action="/user/updateInf/<%=user._id%>" method="post">
+                          <div class="form-group">
+                            <label for="fullname">Full Name:</label>
+                            <input type="text" class="form-control" name="full_name" value="<%=user.full_name%>" placeholder="Enter full name">
+                          </div>
+                          <div class="form-group">
+                            <label for="phone">Phone:</label>
+                            <input type="number" class="form-control" name="phone" value="<%=user.phone%>" placeholder="Enter phone">
+                          </div>
+                          <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="email" value="<%=user.email%>" placeholder="Enter email">
+                          </div>
+                          <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="text" class="form-control" name="address" value="<%=user.address%>" placeholder="Enter address">
+                          </div>
+                          <div class="form-group">
+                            <label for="photo">Photo:</label>
+                            <input type="file" class="form-control-file" name="photo">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Cập nhật</button>
+                        </form>
+                      </div>                      
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>

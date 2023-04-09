@@ -19,9 +19,12 @@ ul li {
   list-style: none;
 }
 
+
+
 a:hover {
-outline: none;
-text-decoration:none;
+
+text-decoration:dotted !important;
+color: #0083C9 !important;
 }
 
 a:focus {

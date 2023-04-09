@@ -1,0 +1,28 @@
+<div class="content-wrapper">
+    <div style="background-color: white; padding: 10px;">
+        <div>
+            <h2 style="display: flex; justify-content: space-between; align-items: center;">
+                <strong>Cart Detail</strong>
+            </h2>
+            <h3 style="border-bottom: 1px solid #ccc;"></h3>
+        </div>
+        <table id="table" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for (let item of data) {%>
+                    <td><%=item.product_id%></td>
+                    <td><%=item.quantity%></td>
+                <% }%>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/admin/cartManage">Back</a>
+    </div>
+</div>

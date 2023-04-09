@@ -1,0 +1,41 @@
+<div class="content-wrapper">
+  <div style="background-color: white; padding: 10px;">
+    <div>
+      <h2 style="display: flex; justify-content: space-between; align-items: center;">
+        <strong>Food Manage </strong>
+        <button type="button"
+          class="btn btn-success add-button">Add New</button>
+      </h2>
+      <h3 style="border-bottom: 1px solid #ccc;"></h3>
+    </div>
+    <table id="mytable" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th>Category</th>
+          <!-- <th>Action</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let item of data) { %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.image %></td>
+            <td><%= item.price %></td>
+            <td><%= item.discount %></td>
+            <td><%= item.category_id %></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#mytable').DataTable();
+  });
+</script>

@@ -1,0 +1,56 @@
+<div class="content-wrapper">
+  <div style="background-color: white; padding: 10px;">
+    <div>
+      <h2 style="display: flex; justify-content: space-between; align-items: center;">
+        <strong>Product Manage </strong>
+        <button type="button" data-toggle="modal" data-target="#add" style="vertical-align:middle"
+          class="btn btn-success add-button">Add New</button>
+      </h2>
+      <h3 style="border-bottom: 1px solid #ccc;"></h3>
+    </div>
+    <table id="mytable" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Image</th>
+          <th>Discount</th>
+          <th>Category</th>
+          <th>Function</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('#mytable').DataTable({
+      ajax: '/admin/getProductList',
+      columns: [
+        { data: 'name' },
+        { data: 'price' },
+        {
+          data: 'image',
+          render: function (data, type, row, meta) {
+            return '<img style="width: 100px; height: 100px;" src="' + data + '"/>';
+          }
+        },
+        { data: 'discount' },
+        {
+          // render: async function (data, type, row) {
+          //   var category = await $.get("/admin/getCategoryById/" + row.category_id);
+          //   return category.name;
+          // }
+          data: 'category_id'
+        },
+        {
+          data: null,
+          "defaultContent": "<button>Edit</button><button>Delete</button>"
+        }
+      ]
+    });
+  });
+</script>

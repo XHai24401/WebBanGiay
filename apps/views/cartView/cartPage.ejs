@@ -73,12 +73,23 @@
 								<p class="cart_total_price"><%=(item.product.price * item.quantity).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })%></p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+								<a class="cart_quantity_delete" href="#"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
                         <% } %>					
 					</tbody>
 				</table>
+			</div>
+			<div style="padding-bottom: 20px;"  class="row">				
+				<div style="float: right;" class="col-sm-6">
+					<div class="total_area">
+						<ul>
+                            <li>Total <span><%=(total).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })%></span></li>
+                        </ul>
+							<a style="float: right;" class="btn btn-default update" href="">Update</a>
+							<a style="float: right; " class="btn btn-default check_out" href="/cart/checkout">Check Out</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section> <!--/#cart_items-->
